@@ -13,6 +13,31 @@ for (int i = 0; i < array.Length; i++)
 }
 
 
+Console.Clear();
+Console.WriteLine("Введите данные через пробел");
+string[] tempArray = Console.ReadLine().Split(' ').ToArray();
+int count = 0;
+for (int i = 0; i < tempArray.Length; i++)
+{
+    if (tempArray[i].Length <= 3) count++;
+}
+string[] result = new string[count];
+for (int i = 0; i < result.Length; i++)
+{
+    for (int j = 0; j < tempArray.Length; j++)
+    {
+        if (tempArray[j].Length <= 3 && tempArray[j] != string.Empty)
+        {
+            result[i] = tempArray[j];
+            tempArray[j] = string.Empty;
+            break;
+        }
+    }
+    Console.Write($"{result[i]} ");
+}
+
+
+
 
 // Метод автоматического заполнения массива
 string[] AutoFilling(int size, int elementLength)
