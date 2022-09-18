@@ -2,24 +2,26 @@
 // Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма
 void PrintArray(string[] array)
 {
+    Console.Write("[");
     for (int i = 0; i < array.Length - 1; i++)
     {
-        Console.Write("[");
-        Console.Write($"{array[i]}, ");
+        if (array[i] != string.Empty) 
+        Console.Write($"\"{array[i]}\", ");
     } 
-    Console.Write("] ");
+    Console.Write($" \"{array[array.Length - 1]}\"]");
 }   
-
-
-Console.Clear();
+string[] StringArrayCondition(string[] array)
+{
+    string[] ArrayCondition = new string[array.Length];
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= 3) ArrayCondition[i] = array[i];
+        else ArrayCondition[i] = string.Empty;
+    }
+    return ArrayCondition;
+}
 string[] StringArray = {"1234", "56789", "-2", "o", "end", "computer science", "{}", "LKJHG"};
 PrintArray(StringArray);
 Console.Write(" ---> ");
-int length = StringArray.Length;
-string[] StringArrayCondition = new string[length];
-for (int i = 0; i < length; i++)
-{
-    if (StringArray[i].Length <= 3) StringArrayCondition[i] = StringArray[i];
-    else StringArrayCondition[i] = string.Empty;
-    if (StringArrayCondition[i] != string.Empty) Console.Write($"{StringArrayCondition[i]} ");
-}
+string[] ResultStringArray = StringArrayCondition(StringArray);
+PrintArray(ResultStringArray);
