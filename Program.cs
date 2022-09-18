@@ -5,22 +5,44 @@ void PrintArray(string[] array)
     Console.Write("[");
     for (int i = 0; i < array.Length - 1; i++)
     {
-        if (array[i] != string.Empty) 
-        Console.Write($"\"{array[i]}\", ");
+        if (array[i] != string.Empty) Console.Write($"\"{array[i]}\", ");
     } 
-    Console.Write($" \"{array[array.Length - 1]}\"]");
+    if (array[array.Length - 1] != string.Empty) Console.Write($"\"{array[array.Length - 1]}\"]");
+    else  Console.Write("]");
 }   
 string[] StringArrayCondition(string[] array)
 {
-    string[] ArrayCondition = new string[array.Length];
+    string[] ArrayCondition;
+    int count = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i].Length <= 3) ArrayCondition[i] = array[i];
-        else ArrayCondition[i] = string.Empty;
+        if (array[i].Length <= 3) count++;
+    }
+    if (count != 0)
+    {
+        ArrayCondition = new string[count];
+        int j = 0;
+        while (j < count)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i].Length <= 3)
+                {
+                    ArrayCondition[j] = array[i];
+                    j++;
+                }
+            }
+        }
+    }
+    else
+    {
+        ArrayCondition = new string[1];
+        ArrayCondition[0] = string.Empty;
     }
     return ArrayCondition;
 }
 string[] StringArray = {"1234", "56789", "-2", "o", "end", "computer science", "{}", "LKJHG"};
+//string[] StringArray = {"1234", "56789", "computer science", "LKJHG"};
 PrintArray(StringArray);
 Console.Write(" ---> ");
 string[] ResultStringArray = StringArrayCondition(StringArray);
