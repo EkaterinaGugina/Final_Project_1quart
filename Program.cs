@@ -5,11 +5,11 @@ void PrintArray(string[] array)
     Console.Write("[");
     for (int i = 0; i < array.Length - 1; i++)
     {
-        if (array[i] != string.Empty) Console.Write($"\"{array[i]}\", ");
-    } 
+        Console.Write($"\"{array[i]}\", ");
+    }
     if (array[array.Length - 1] != string.Empty) Console.Write($"\"{array[array.Length - 1]}\"]");
-    else  Console.Write("]");
-}   
+    else if (array[array.Length - 1] == string.Empty) Console.Write("]");
+}
 string[] StringArrayCondition(string[] array)
 {
     string[] ArrayCondition;
@@ -41,8 +41,10 @@ string[] StringArrayCondition(string[] array)
     }
     return ArrayCondition;
 }
-string[] StringArray = {"1234", "56789", "-2", "o", "end", "computer science", "{}", "LKJHG"};
+//string[] StringArray = { "1234", "56789", "end", "computer science", "LKJHG" };
 //string[] StringArray = {"1234", "56789", "computer science", "LKJHG"};
+//string[] StringArray = {"Hello", "2", "world", ":-)"}; 
+string[] StringArray = {"Russia", "Denmark", "Kazan"};
 PrintArray(StringArray);
 Console.Write(" ---> ");
 string[] ResultStringArray = StringArrayCondition(StringArray);
